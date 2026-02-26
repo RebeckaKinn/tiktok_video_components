@@ -1,56 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Burger menu animation - without JS</title>
     <style>
-        #menu {
-            position: fixed;
-            top: 2%;
-            right: 3%;
-        }
+      #menu {
+        position: fixed;
+        top: 2%;
+        left: 3%;
+      }
+      #menu input {
+        position: absolute;
+        opacity: 0;
+      }
+      #menu label span {
+        display: block;
+        width: 50px;
+        height: 4px;
+        margin: 10px 0px 3px 0;
+        background-color: black;
+        border-radius: 3px;
+        transition: 0.5s ease-in-out;
+        transform-origin: left center;
+      }
 
-        #menu input {
-            position: absolute;
-            opacity: 0;
-        }
-
-        #menu label span {
-            display: block;
-            width: 50px;
-            height: 4px;
-            margin: 10px 0 3px 0;
-            background-color: black;
-            border-radius: 3px;
-            transition: 0.5s ease-in-out;
-            transform-origin: left center;
-        }
-        #menu input:checked ~ label span {
-            transform: rotate(-35deg);
-        }
-
-        #menu input:checked ~ label span:nth-last-child(2) {
-            width: 0%;
-            opacity: 0;
-            transition: 0.5s;
-        }
-
-        #menu input:checked ~ label span:nth-last-child(3) {
-            transform: rotate(35deg);
-        }
+      #menu input:checked ~ label span {
+        transform: rotate(-35deg);
+      }
+      #menu input:checked ~ label span:nth-last-child(2) {
+        width: 0%;
+        opacity: 0;
+        transition: 0.5s;
+      }
+      #menu input:checked ~ label span:nth-last-child(3) {
+        transform: rotate(35deg);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav id="menu">
-          <input id="burgerMenu" type="checkbox" />
-          <label for="burgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
+      <input id="burgerMenu" type="checkbox" />
+      <label for="burgerMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
     </nav>
-
-    
-</body>
+  </body>
 </html>
