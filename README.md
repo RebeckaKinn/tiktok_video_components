@@ -60,7 +60,7 @@ git clone https://github.com/RebeckaKinn/tiktok_video_components.git
   <li>Høyreklikk → Open with Live Server</li>
 </ul>
 
-<b>Happy coding! 💻🔥</b>
-<h2><i>GET Academy</i></h2>
+<i>Happy coding! 💻🔥</i>
+
 
 
