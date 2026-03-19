@@ -10,36 +10,32 @@
         --text-color: black;
       }
 
-      /* Manuell override */
       body.dark {
-        --bg-color: #121212;
+        --bg-color: black;
         --text-color: white;
       }
-
       body.light {
         --bg-color: white;
         --text-color: black;
       }
-
       body {
         background-color: var(--bg-color);
         color: var(--text-color);
         transition: 0.3s;
       }
 
-      /* Hvis bruker har dark mode på systemet */
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg-color: #121212;
+          --bg-color: black;
           --text-color: white;
         }
       }
     </style>
   </head>
   <body>
+    <h2>HTML | CSS | JavaScript</h2>
     <button onclick="changeMode()">Bytt tema</button>
     <p>Dette bruker CSS variabler og prefers-color-scheme</p>
-
     <script>
       function changeMode() {
         if (document.body.classList.contains("dark")) {
