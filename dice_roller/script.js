@@ -5,10 +5,25 @@ const dice = [
   { name: "d4", maxNum: 4, img: "./img/d4.png" },
 ];
 
+function renderDiceButtons() {
+  return dice
+    .map(
+      (d) => `
+    <button onclick="rollDice('${d.name}')" class="dice-btn">
+      <img src="${d.img}" alt="${d.name}">
+      <p>${d.name}</p>
+    </button>
+  `,
+    )
+    .join("");
+}
+
 function renderLayout() {
   document.getElementById("app").innerHTML = /*HTML*/ `
     <h1>🎲 Dice Roller</h1>
-    <div id="dice-container"></div>
+    <div id="dice-container">
+      ${renderDiceButtons()}
+    </div>
     <div id="result">
       <div class="dice-display">
         <img id="dice-img" src="" alt="">
@@ -19,42 +34,36 @@ function renderLayout() {
   `;
 }
 
-function renderDiceButtons() {
-  const container = document.getElementById("dice-container");
-
-  container.innerHTML = "";
-
-  dice.forEach(function (d) {
-    const btn = document.createElement("div");
-    btn.classList.add("dice-btn");
-
-    btn.innerHTML = `
-      <img src="${d.img}" alt="${d.name}">
-      <p>${d.name}</p>
-    `;
-
-    btn.addEventListener("click", function () {
-      rollDice(d);
-    });
-
-    container.appendChild(btn);
-  });
-}
-
 function roll(max) {
   return Math.floor(Math.random() * max) + 1;
 }
 
-function rollDice(die) {
+function renderResultDisplay(diceImg = "", diceValue = "?") {
+  return /*HTML*/ `
+    <div class="result">
+      <div class="dice-display">
+        <img class="dice-img" src="${diceImg}" alt="">
+        <div class="dice-result">${diceValue}</div>
+      </div>
+      <div class="confetti-container"></div>
+    </div>
+  `;
+}
+
+function rollDice(name) {
+  const die = dice.find((d) => d.name === name);
+  if (!die) return;
+
   const resultText = document.getElementById("dice-result");
   const resultImg = document.getElementById("dice-img");
+  const confettiContainer = document.getElementById("confetti-container");
 
   resultImg.src = die.img;
   resultImg.classList.add("shake");
 
   let rolls = 10;
 
-  const interval = setInterval(function () {
+  const interval = setInterval(() => {
     const value = roll(die.maxNum);
     resultText.textContent = value;
 
@@ -65,42 +74,24 @@ function rollDice(die) {
 
       const finalValue = roll(die.maxNum);
       resultText.textContent = finalValue;
-
       resultImg.classList.remove("shake");
-      createConfetti();
+      createConfetti(confettiContainer);
     }
   }, 100);
 }
 
-function createConfetti() {
-  const confettiContainer = document.getElementById("confetti-container");
-
-  // Lag 30 konfetti-biter
+function createConfetti(container) {
   for (let i = 0; i < 30; i++) {
     const confetti = document.createElement("div");
     confetti.classList.add("confetti");
-
-    // tilfeldig farge og posisjon
     confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
     confetti.style.left = Math.random() * 100 + "%";
     confetti.style.animationDuration = 1 + Math.random() * 1.5 + "s";
     confetti.style.width = 6 + Math.random() * 6 + "px";
     confetti.style.height = 6 + Math.random() * 6 + "px";
 
-    confettiContainer.appendChild(confetti);
-
-    // Fjern konfetti etter animasjon
-    setTimeout(function () {
-      confetti.remove();
-    }, 2000);
+    container.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 2000);
   }
 }
-
-// =====================
-// 🚀 START
-function init() {
-  renderLayout();
-  renderDiceButtons();
-}
-
-init();
+renderLayout();

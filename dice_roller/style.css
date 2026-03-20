@@ -33,6 +33,14 @@ h1 {
   height: 80px;
   object-fit: contain;
 }
+.dice-btn p {
+  font-size: 1rem;
+  color: rgb(245, 247, 245);
+  text-shadow:
+    0 0 5px black,
+    0 0 10px black,
+    0 0 20px rgba(0, 0, 0, 0.8);
+}
 
 #result {
   margin-top: 40px;
