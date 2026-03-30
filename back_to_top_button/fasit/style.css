@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.content {
+  height: 2000px;
+  padding: 20px;
+  color: white;
+  background-color: rgb(47, 47, 47);
+}
+
+#backToTopContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#backToTopContainer.show {
+  opacity: 1;
+}
+
+#backToTopContainer button {
+  background-color: #0077ff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+#backToTopContainer button:hover {
+  transform: scale(1.1);
+}

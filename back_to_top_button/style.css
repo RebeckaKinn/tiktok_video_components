@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.content {
+  height: 2000px;
+  padding: 20px;
+  color: white;
+  background-color: rgb(47, 47, 47);
+}
