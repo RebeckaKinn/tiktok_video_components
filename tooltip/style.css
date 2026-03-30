@@ -1,14 +1,9 @@
 body {
-  height: 200vh;
+  height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #1e1e2f, #3a3a5a);
   color: white;
-}
-
-.content {
-  text-align: center;
-  margin-top: 100px;
 }
 
 #tooltip {
@@ -16,12 +11,9 @@ body {
   top: 0;
   left: 0;
   padding: 10px 15px;
-  background: #00ffcc;
-  color: #000;
-  border-radius: 8px;
+  color: white;
   pointer-events: none;
-  font-weight: bold;
+  white-space: nowrap;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease;
-  white-space: nowrap;
 }

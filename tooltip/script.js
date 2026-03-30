@@ -2,6 +2,7 @@ const tooltip = document.getElementById("tooltip");
 
 let mouseX = 0;
 let mouseY = 0;
+
 let currentX = 0;
 let currentY = 0;
 
@@ -19,5 +20,4 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
-
 animate();
