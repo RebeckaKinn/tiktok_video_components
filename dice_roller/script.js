@@ -8,7 +8,7 @@ const dice = [
 function renderDiceButtons() {
   return dice
     .map(
-      (d) => `
+      (d) => /*HTML*/ `
     <button onclick="rollDice('${d.name}')" class="dice-btn">
       <img src="${d.img}" alt="${d.name}">
       <p>${d.name}</p>
@@ -30,7 +30,6 @@ function renderLayout() {
         <div id="dice-result">?</div>
       </div>
     </div>
-    <div id="confetti-container"></div>
   `;
 }
 
@@ -45,7 +44,7 @@ function renderResultDisplay(diceImg = "", diceValue = "?") {
         <img class="dice-img" src="${diceImg}" alt="">
         <div class="dice-result">${diceValue}</div>
       </div>
-      <div class="confetti-container"></div>
+
     </div>
   `;
 }
@@ -56,7 +55,6 @@ function rollDice(name) {
 
   const resultText = document.getElementById("dice-result");
   const resultImg = document.getElementById("dice-img");
-  const confettiContainer = document.getElementById("confetti-container");
 
   resultImg.src = die.img;
   resultImg.classList.add("shake");
@@ -75,23 +73,8 @@ function rollDice(name) {
       const finalValue = roll(die.maxNum);
       resultText.textContent = finalValue;
       resultImg.classList.remove("shake");
-      createConfetti(confettiContainer);
     }
   }, 100);
 }
 
-function createConfetti(container) {
-  for (let i = 0; i < 30; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-    confetti.style.left = Math.random() * 100 + "%";
-    confetti.style.animationDuration = 1 + Math.random() * 1.5 + "s";
-    confetti.style.width = 6 + Math.random() * 6 + "px";
-    confetti.style.height = 6 + Math.random() * 6 + "px";
-
-    container.appendChild(confetti);
-    setTimeout(() => confetti.remove(), 2000);
-  }
-}
 renderLayout();
