@@ -7,9 +7,6 @@ function startQuiz() {
 
 function checkQuestion(choice) {
   if (choice) model.viewState.points++;
-  else if (model.viewState.points > 0 && !choice) model.viewState.points--;
-  else model.viewState.points = 0;
-
   model.viewState.currentQuestionIndex++;
   checkQuestionIndex(model.viewState.currentQuestionIndex);
   updateView();
